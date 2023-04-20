@@ -1,3 +1,10 @@
+<?php 
+
+  require_once("globals.php");
+  require_once("models/db.php");
+    
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
