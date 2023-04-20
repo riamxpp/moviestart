@@ -31,7 +31,7 @@
         <i class="fas fa-bars"></i>
       </button>
       <form action="" method="GET" class="form-inline my-2 my-lg-0" id="search-form">
-        <input type="search" name="q" id="search" class="form-control mr-sm-2" placeholder="Buscar filmes" aria-label="Search">
+        <input type="search" name="q" id="search" class="form-control d-inline mr-sm-2" placeholder="Buscar filmes" aria-label="Search">
         <button class="btn my-2 my-sm-0" type="submit">
           <i class="fas fa-search"></i>
         </button>
