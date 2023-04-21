@@ -32,7 +32,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
-      <form action="" method="GET" class="form-inline my-2 my-lg-0" id="search-form">
+      <form action="" method="GET" class="form-inline my-2 my-lg-0 d-flex" id="search-form">
         <input type="search" name="q" id="search" class="form-control d-inline mr-sm-2" placeholder="Buscar filmes" aria-label="Search">
         <button class="btn my-2 my-sm-0" type="submit">
           <i class="fas fa-search"></i>
@@ -48,7 +48,7 @@
     </nav>
   </header>
   <?php if(!empty($flassMessage['msg'])): ?>
-    <div class="msg-container">
+    <div class="msg-containe">
       <p class="msg <?= $flassMessage['type'] ?>"><?= $flassMessage['msg'] ?></p>
     </div>
   <?php endif; ?>
