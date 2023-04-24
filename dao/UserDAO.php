@@ -18,14 +18,14 @@
     public function buildUser($data){
 
       $user = new User();   
-      $user->id = $data['id']; 
-      $user->name = $data['name'];  
-      $user->lastname = $data['lastname'];  
-      $user->email = $data['email'];  
-      $user->password = $data['password'];  
-      $user->image = $data['image'];
-      $user->bio = $data['bio'];    
-      $user->token = $data['token'];  
+      $user->id = $data["id"]; 
+      $user->name = $data["name"];  
+      $user->lastname = $data["lastname"];  
+      $user->email = $data["email"];  
+      $user->password = $data["password"];  
+      $user->img = $data["img"];
+      $user->bio = $data["bio"];    
+      $user->token = $data["token"];  
 
       return $user;
     }
@@ -50,7 +50,31 @@
       }
     }
 
-    public function update(User $user){
+    public function update(User $user, $redirect = true){
+
+      $stmt = $this->conn->prepare("UPDATE users SET 
+        name = :name, 
+        lastname = :lastname, 
+        email = :email, 
+        img = :img,
+        bio = :bio,
+        token = :token
+        WHERE id = :id
+      ");
+
+      $stmt->bindParam(":name", $user->name);
+      $stmt->bindParam(":lastname", $user->lastname);
+      $stmt->bindParam(":email", $user->email);
+      $stmt->bindParam(":img", $user->img);
+      $stmt->bindParam(":bio", $user->bio);
+      $stmt->bindParam(":token", $user->token);
+      $stmt->bindParam(":id", $user->id);
+
+      $stmt->execute();
+
+      if($redirect){
+        $this->message->setMessage("Dados atualizados com sucesso", "seccess", "editprofile.php");
+      }
 
     }
 
@@ -85,6 +109,23 @@
     }
 
     public function authenticateUser($email, $password){
+
+      $user = $this->findByEmail($email);
+
+      if ($user){
+        if (password_verify($password, $user->password)){
+
+          $token = $user->generateToken();
+
+          $this->setTokenToSession($token, false);
+          // Atualizar token no usuário;
+          $user->token = $token;
+          $this->update($user, false);
+
+          return true;
+
+        }else return false;
+      }else return false;
 
     }
 

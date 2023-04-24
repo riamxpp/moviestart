@@ -7,7 +7,7 @@
     public $lastname;
     public $email;
     public $password;
-    public $image;
+    public $img;
     public $bio;
     public $token;
 
@@ -24,7 +24,7 @@
   interface UserInterface {
     public function buildUser($data);
     public function create(User $user, $authUser = false);
-    public function update(User $user);
+    public function update(User $user, $redirect = true);
     public function verifyToken($protected = false);
     public function setTokenToSession($token, $redirect = true);
     public function authenticateUser($email, $password);

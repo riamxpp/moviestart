@@ -71,14 +71,14 @@
 
 .msg.error {
   color: #842029;
-  background-color: #FDd7DA;
-  border-color: #F5C2C7;
+  background-color: #fdd7da;
+  border-color: #f5c2c7;
 }
 
 .msg.success {
   color: #0f5132;
-  background-color: #f8d7da;
-  border-color: #f5c2c7;
+  background-color: #d8fdcc;
+  border-color: #ccf5c2;
 }
 
 /* Home */
@@ -113,9 +113,9 @@
 .card-btn {
   color: #000;
   background-color: #f5c518;
-  border: 2px solid #F5C518;
+  border: 2px solid #f5c518;
   width: 100%;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .card-btn:hover {
