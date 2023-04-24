@@ -23,7 +23,23 @@
     if ($name && $lastname && $email && $password){
       if ($password === $confirmpassword) {
         if ($userDAO->findByEmail($email) === false) {
-          echo "Nenhum usuario foi encontrado";
+          
+          $user = new User();
+
+          // Criação de token e senha;
+          $userToken = $user->generateToken();
+          $finalPassword = $user->generatePassword($password);
+
+          $user->name = $name;
+          $user->lastname = $lastname;
+          $user->email = $email;
+          $user->password = $finalPassword;
+          $user->token = $userToken;
+
+          $auth = true;
+
+          $userDAO->create($user, $auth);
+
         }else {
           $message->setMessage("O email inserido já esta cadastrado no sistema.", "error", "back");  
         }
