@@ -73,7 +73,7 @@
       $stmt->execute();
 
       if($redirect){
-        $this->message->setMessage("Dados atualizados com sucesso", "seccess", "editprofile.php");
+        $this->message->setMessage("Dados atualizados com sucesso", "success", "editprofile.php");
       }
 
     }
