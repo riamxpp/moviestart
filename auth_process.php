@@ -7,7 +7,7 @@
   require_once("models/Message.php");
 
   $message = new Message($BASE_URL);
-
+  $userDAO = new UserDAO($conn, $BASE_URL);
   // Verifica o tipo de formulario
   $type = filter_input(INPUT_POST, "type");
 
@@ -19,11 +19,18 @@
     $email = filter_input(INPUT_POST, "email");
     $password = filter_input(INPUT_POST, "password");
     $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
-
+    
     if ($name && $lastname && $email && $password){
+      if ($password === $confirmpassword) {
+        if ($userDAO->findByEmail($email) === false) {
+          echo "Nenhum usuario foi encontrado";
+        }else {
+          $message->setMessage("O email inserido já esta cadastrado no sistema.", "error", "back");  
+        }
 
-
-
+      }else {
+        $message->setMessage("As senhas não são iguais", "error", "back");
+      }
     }else {
       // Enviar mensagem de erro
       $message->setMessage("Por favor preencha todos os campos", "error", "back");

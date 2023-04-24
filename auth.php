@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
               <label for="lastname">Sobrenome</label>
-              <input type="lastname" name="namlastname" id="namlastname" class="form-control" placeholder="Sobrenome">
+              <input type="lastname" name="lastname" id="lastname" class="form-control" placeholder="Sobrenome">
             </div>
             <div class="form-group">
               <label for="password">Senha</label>
