@@ -14,7 +14,7 @@
   }
 
 ?>
-  <div id="main-container" class="container-fluid">
+  <div id="main-container" class="container-fluid edit-profile-page">
     <div class="col-md-12">
       <form action="<?= $BASE_URL ?>user_process.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="type" value="update">
@@ -24,31 +24,49 @@
             <p class="page-description">Altere seus dados no formulário abaixo:</p>
             <div class="form-group">
               <label for="name">Nome</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="Digite seu nome" value="<?= $userData->name ?>"  >
+              <input type="text" class="form-control mt-2" name="name" id="name" placeholder="Digite seu nome" value="<?= $userData->name ?>"  >
             </div>
             <div class="form-group">
               <label for="lastname">Sobrenome</label>
-              <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Digite seu sobrenome" value="<?= $userData->lastname ?>"  >
+              <input type="text" class="form-control mt-2" name="lastname" id="lastname" placeholder="Digite seu sobrenome" value="<?= $userData->lastname ?>"  >
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" readonly class="form-control disabled" name="email" id="email" value="<?= $userData->email ?>"  >
+              <input type="text" readonly class="form-control mt-2 disabled" name="email" id="email" value="<?= $userData->email ?>"  >
             </div>
-            <input type="submit" class="btn form-btn" value="Alterar">
+            <input type="submit" class="btn card-btn mt-3" value="Alterar">
           </div>
           <div class="col-md-4">
             <div id="profile-image-container" style="background-image: url(<?= $BASE_URL ?>img/users/<?= $userData->img ?>)"></div>
             <div class="form-group">
               <label for="image">Foto: </label>
-              <input type="file" class="form-control-file" name="image" id="image" value="<?= $userData->img ?>"  >
+              <input type="file" class="form-control-file mt-2" name="image" id="image" value="<?= $userData->img ?>"  >
             </div>
             <div class="form-group">
               <label for="bio">Sobre você:</label>
-              <textarea class="form-control" name="bio" id="bio" rows="5" placeholder="Fale sobre você"><?= $userData->bio ?></textarea>
+              <textarea class="form-control mt-2" name="bio" id="bio" rows="5" placeholder="Fale sobre você"><?= $userData->bio ?></textarea>
             </div>
           </div>
         </div>
       </form>
+    </div>
+    <div class="row" id="change-password-container">
+      <div class="col-md-4">
+        <h2>Alterar a senha</h2>
+        <p class="page-description">Digite a nova senha e confirme para alterar sua senha!</p>
+        <form action="<?= $BASE_URL ?>user_process.php" method="POSTS">
+          <input type="hidden" name="type" values="changepassword">
+          <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" class="form-control mt-2" name="password" id="password" placeholder="Digite sua senha">
+          </div>
+          <div class="form-group">
+            <label for="confirmpassword">Confirme sua senha:</label>
+            <input type="password" class="form-control mt-2" name="confirmpassword" id="confirmpassword" placeholder="Digite sua senha">
+          </div>
+          <input type="submit" value="Alterar senha" class="btn card-btn mt-2">
+        </form>
+      </div>
     </div>
   </div>
 
