@@ -11,6 +11,10 @@
     public $bio;
     public $token;
 
+    public function imageGenerateName(){
+      return bin2hex(random_bytes(60)) . ".jpg";
+    }
+
     public function getFullName($user){
       return $user->name . " " .  $user->lastname;
     }
