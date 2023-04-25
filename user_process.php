@@ -32,35 +32,17 @@
     if (isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])){
       
       $image = $_FILES["image"];
-      $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
-      $jpgArray = ["image/jpeg", "image/jpg"];
+      $pasta = "img/users";
+      $extensao = strtolower(pathinfo($image["name"], PATHINFO_EXTENSION));
+      $imageName = $user->imageGenerateName();
 
-      if(in_array($image["type"], $imageTypes)) {
+      $final_path = $pasta . "/" . $imageName . "." . $extensao; 
 
-        if(in_array($image, $jpgArray)){
-
-          $imageFile = imagecreatefromjpeg($image["tmp_name"]);
-
-        } else {
-
-          $imageFile = @imagecreatefrompng($image["tmp_name"]);
-
-        }
-
-        $imageName = $user->imageGenerateName();
-
-        imagejpeg($imageFile, "./img/users/". $imageName, 100);
-
-        $userData->img = $imageName;
-  
-
-      }else {
-
-        $message->setMessage("Tipo de imagem inválido!", "error", "back");
-
+      $verifica_arquivo = move_uploaded_file($image["tmp_name"], $final_path);
+      if($verifica_arquivo) {
+        $userData->img = $final_path;
+        $userDAO->update($userData);
       }
-
-      $userDAO->update($userData);
 
     }
 
