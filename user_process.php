@@ -9,6 +9,7 @@
   $message = new Message($BASE_URL);
 
   $userDAO = new userDAO($conn, $BASE_URL);
+  $user = new User();
 
   $type = filter_input(INPUT_POST, "type");
 
@@ -21,7 +22,6 @@
     $email = filter_input(INPUT_POST, "email");
     $bio = filter_input(INPUT_POST, "bio");
     
-    $user = new User();
 
     $userData->name = $name;
     $userData->lastname = $lastname;
@@ -47,6 +47,24 @@
     }
 
   }else if ($type === "changepassword"){
+    
+    $password = filter_input(INPUT_POST, "password");
+    $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+    // Confirma que o dado esta sendo enviado pelo usuario logado;
+    $id = $userDAO->verifyToken()->id;
+
+    if($password === $confirmpassword) {
+
+      $final_password = $user->generatePassword($password);
+
+      $user->password = $final_password;
+      $user->id = $id;
+
+      $userDAO->changePassword($user);
+
+    }else {
+      $message->setMessage("As senhas não são iguais!", "error", "back");    
+    }
 
   }else {
 
