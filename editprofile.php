@@ -4,9 +4,11 @@
   require_once("dao/UserDAO.php");
   require_once("models/User.php");
 
-  $userDAO = new UserDAO($conn, $BASE_URL);
-  $userData = $userDAO->verifyToken(true);
   $user = new User();
+  $userDAO = new UserDAO($conn, $BASE_URL);
+  
+  $userData = $userDAO->verifyToken(true);
+
   $fullName  = $user->getFullName($userData);
 
   if($userData->img == ""){
