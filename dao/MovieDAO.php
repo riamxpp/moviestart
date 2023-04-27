@@ -57,6 +57,21 @@
 
     public function create(Movie $movie){
 
+      $stmt = $this->conn->prepare("INSERT INTO movies (
+        title, description, img, trailer, category, length, users_id)
+        VALUES (
+          :title, :description, :img, :trailer, :category, :length, :users_id
+        )");
+
+      $stmt->bindParam(":title", $movie->title);
+      $stmt->bindParam(":description", $movie->description);
+      $stmt->bindParam(":img", $movie->img);
+      $stmt->bindParam(":trailer", $movie->trailer);
+      $stmt->bindParam(":category", $movie->category);
+      $stmt->bindParam(":length", $movie->length);
+      $stmt->bindParam(":users_id", $movie->users_id);
+
+      $stmt->execute();
     }
 
     public function update(Movie $movie){
