@@ -167,6 +167,10 @@
   margin: 0 -15px;
 }
 
+.wrapper-movies {
+  display: flex;
+}
+
 .movie-card {
   background-color: #1a1a1a;
   width: 18%;
@@ -175,6 +179,7 @@
   margin-right: 1%;
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .movie-card .card-img-top {
