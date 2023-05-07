@@ -10,6 +10,8 @@
   $movieDAO = new MovieDAO($conn, $BASE_URL);
   
   $userData = $userDAO->verifyToken(true);
+
+  $userMovies = $movieDAO->findAll($userData->id);
 ?>
 
 <div id="main-container" class="container-fluid">
