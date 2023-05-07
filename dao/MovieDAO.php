@@ -32,7 +32,21 @@
     }
 
     public function findAll(){
+      $movies = [];
 
+      $stmt = $this->conn->query("SELECT * FROM movies");
+
+      $stmt->execute();
+    
+      if ($stmt->rowCount() > 0){
+        $allMovies = $stmt->fetchAll();
+
+        foreach($allMovies as $movie) {
+          $movies[] = $this->buildMovie($movie);
+        }
+      }
+
+      return $movies; 
     }
 
     public function getLatesMovies(){
@@ -83,8 +97,23 @@
 
     }
 
-    public function  getMovieByUserId($id){
+    public function getMovieByUserId($id){
+      $movies = [];
+      $stmt = $this->conn->prepare("SELECT * FROM movies WHERE users_id = :id");
 
+      $stmt->bindparam(":id", $id);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() > 0) {
+        $allMovies = $stmt->fetchAll();
+
+        foreach($allMovies as $movie){
+          $movies[] = $this->buildMovie($movie);
+        }
+      }
+
+      return $movies;
     }
     
     public function findById($id) {

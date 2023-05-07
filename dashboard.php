@@ -2,12 +2,18 @@
 
   require_once("templates/Header.php");
   require_once("dao/UserDAO.php");
+  require_once("dao/MovieDAO.php");
   require_once("models/User.php");
 
   $user = new User();
   $userDAO = new UserDAO($conn, $BASE_URL);
+  $movieDAO = new MovieDAO($conn, $BASE_URL);
   
   $userData = $userDAO->verifyToken(true);
+
+  $userMovies = $movieDAO->findAll($userData->id);
+
+  var_dump($userMovies);
 
 ?>
 
@@ -30,21 +36,23 @@
         <th scope="col" class="action-column">Ações</th>
       </thead>
       <tbody>
-        <tr>
-          <td scope="row">#</td>
-          <td class="table-movie-title">Título</td>
-          <td><i class="fas fa-star">9</i></td>
-          <td class="actions-column">
-            <a href="#" class="edit-btn">
-              <i class="far fa-edit"></i> Editar
-            </a>
-            <form action="">
-              <button type="submit" class="delete-btn">
-                <i class="fas fa-time"></i> Deletar
-              </button>
-            </form>
-          </td>
-        </tr>
+        <?php foreach($userMovies as $movie): ?>
+          <tr>
+            <td scope="row"><?= $movie->id ?></td>
+            <td ><a class="table-movie-title" href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id?>"><?= $movie->title ?></a></td>
+            <td><i class="fas fa-star">9</i></td>
+            <td class="actions-column">
+              <a href="#" class="edit-btn">
+                <i class="far fa-edit"></i> Editar
+              </a>
+              <form action="">
+                <button type="submit" class="delete-btn">
+                  <i class="fas fa-time"></i> Deletar
+                </button>
+              </form>
+            </td>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>
