@@ -117,22 +117,22 @@
     }
     
     public function findById($id) {
-      $movies = [];
-      $stmt = $this->conn->prepare("SELECT * FROM movies WHERE users_id = :id");
+      $movie = [];
+      $stmt = $this->conn->prepare("SELECT * FROM movies WHERE id = :id");
 
       $stmt->bindparam(":id", $id);
 
       $stmt->execute();
 
-      if($stmt->rowCount() > 0) {
-        $allMovies = $stmt->fetchAll();
+      if($stmt->rowCount() > 0){
+        $movieData = $stmt->fetch();
 
-        foreach($allMovies as $movie){
-          $movies[] = $this->buildMovie($movie);
-        }
+        $movie = $this->buildMovie($movieData);
+
+        return $movie;
+      }else {
+        return false;
       }
-
-      return $movies;
     }
 
     public function findByTitle($title){
