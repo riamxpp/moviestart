@@ -10,11 +10,6 @@
   $movieDAO = new MovieDAO($conn, $BASE_URL);
   
   $userData = $userDAO->verifyToken(true);
-
-  $userMovies = $movieDAO->findAll($userData->id);
-
-  var_dump($userMovies);
-
 ?>
 
 <div id="main-container" class="container-fluid">
@@ -42,10 +37,12 @@
             <td ><a class="table-movie-title" href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id?>"><?= $movie->title ?></a></td>
             <td><i class="fas fa-star">9</i></td>
             <td class="actions-column">
-              <a href="#" class="edit-btn">
+              <a href="<?= $BASE_URL ?>editmovie.php?id=<?= $movie->id?>" class="edit-btn">
                 <i class="far fa-edit"></i> Editar
               </a>
-              <form action="">
+              <form action="<?= $BASE_URL ?>movie_process.php">
+                <input type="hidden" name="type" value="delete">
+                <input type="hidden" name="id" value="<?= $movie->id ?>">
                 <button type="submit" class="delete-btn">
                   <i class="fas fa-time"></i> Deletar
                 </button>
