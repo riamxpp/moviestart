@@ -117,11 +117,42 @@
     }
     
     public function findById($id) {
+      $movies = [];
+      $stmt = $this->conn->prepare("SELECT * FROM movies WHERE users_id = :id");
 
+      $stmt->bindparam(":id", $id);
+
+      $stmt->execute();
+
+      if($stmt->rowCount() > 0) {
+        $allMovies = $stmt->fetchAll();
+
+        foreach($allMovies as $movie){
+          $movies[] = $this->buildMovie($movie);
+        }
+      }
+
+      return $movies;
     }
 
     public function findByTitle($title){
+      $movies = [];
 
+      $stmt = $this->conn->prepare("SELECT * FROM movies WHERE title = :title");
+
+      $stmt->bindparam(":title", $title);
+    
+      $stmt->execute();
+
+      if($stmt->rowCount() > 0) {
+        $allMovies = $stmt->fetchAll();
+
+        foreach($allMovies as $movie){
+          $movies[] = $this->buildMovie($movie);
+        }
+      }
+
+      return $movies;
     }
 
     public function create(Movie $movie){
@@ -144,7 +175,17 @@
     }
 
     public function update(Movie $movie){
+      $stmt = $this->conn->prepare("UPDATE movies 
+                                    SET title = :title, description = :description, img = :img, trailer = :trailer, category = :category, length = :length
+                                    WHERE users_id = :user_id");
+    
+      $stmt->bindparam(":title", $title);  
+      $stmt->bindparam(":description", $description);  
+      $stmt->bindparam(":img", $img);  
+      $stmt->bindparam(":trailer", $trailer);  
+      $stmt->bindparam(":category", $category);  
 
+      $stmt->execute();
     }
 
     public function destroy($id){
