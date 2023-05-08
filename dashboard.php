@@ -11,7 +11,7 @@
   
   $userData = $userDAO->verifyToken(true);
 
-  $userMovies = $movieDAO->findAll($userData->id);
+  $userMovies = $movieDAO->getMovieByUserId($userData->id);
 ?>
 
 <div id="main-container" class="container-fluid">

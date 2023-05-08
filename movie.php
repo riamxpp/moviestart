@@ -27,8 +27,11 @@
       $userOwnsMovie = true; 
     }
   }
-
-  var_dump($movie->trailer);
+  // Trocando o 'watch' do link do trailer por 'embed'
+  $newTrailer;
+  if(!empty($movie->trailer)){
+    $newTrailer = str_replace("watch", "embed", $movie->trailer);
+  }
 ?>
 
 <div id="main-container" class="container-fluid">
@@ -42,9 +45,9 @@
         <span class="pipe"></span>
         <span><i class="fas fa-star"></i> 9</span>
       </p>
-      <iframe src="https://www.youtube.com/embed?v=4dvYznqqqPo&ab_channel=SonyPicturesBrasil" title="<?= $movie->title?> trailer" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        <p><?= $movie->description ?></p>
+      <iframe src="<?= $newTrailer ? $newTrailer : $movie->trailer ?>" title="<?= $movie->title?> trailer" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
       </iframe>
+      <p><?= $movie->description ?></p>
     </div>
   </div>
 </div>
