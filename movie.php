@@ -36,6 +36,8 @@
   if (empty($movie->img)){
     $movie->img = " img/movies/movie_cover.jpg";
   }
+
+  echo $BASE_URL . 'img/users/user.png'
 ?>
 
 <div id="main-container" class="container-fluid">
@@ -71,7 +73,7 @@
           <input type="hidden" name="movies_id" value="<?=$movie->id?>">
           <div class="form-group">
             <label for="rating">Nota do filme</label>
-            <select name="rating" id="rating">
+            <select name="rating" id="rating" class="form-control">
               <option value="">Selecione</option>
               <option value="10">10</option>
               <option value="9">9</option>
@@ -94,8 +96,8 @@
       </div>
       <div class="col-md-12 review">
         <div class="row">
-          <div class="col-md-1">
-            <div class="profile-image-container review-image" class="background-image: url('<?= $BASE
+          <div class="col-md-2">
+            <div class="profile-image-container review-image" style="background-image: url('<?= $BASE_URL
              ?>img/users/user.png')"></div>
           </div>
           <div class="col-md-9 author-details-container">
@@ -112,8 +114,8 @@
       </div>
       <div class="col-md-12 review">
         <div class="row">
-          <div class="col-md-1">
-            <div class="profile-image-container review-image" class="background-image: url('<?= $BASE
+          <div class="col-md-2">
+            <div class="profile-image-container review-image" style="background-image: url('<?= $BASE_URL
              ?>img/users/user.png')"></div>
           </div>
           <div class="col-md-9 author-details-container">

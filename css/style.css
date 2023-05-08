@@ -35,3 +35,23 @@
   background-color: #d8fdcc;
   border-color: #ccf5c2;
 }
+
+.card-btn {
+  color: #000;
+  background-color: #f5c518;
+  border: 2px solid #f5c518;
+  width: 100%;
+  transition: 0.2s;
+}
+
+.card-btn:hover {
+  background-color: transparent;
+  color: #f5c518;
+  border-color: #f5c518;
+}
+
+.edit-profile-page .card-btn,
+#add-movie-container .card-btn,
+#review-form .card-btn {
+  width: auto;
+}
