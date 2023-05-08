@@ -189,6 +189,12 @@
     }
 
     public function destroy($id){
+      $stmt = $this->conn->prepare("DELETE FROM movies WHERE id = :id");
 
+      $stmt->bindparam(":id", $id);
+
+      $stmt->execute();
+
+      $this->message->setMessage("Filme removido com sucesso!", "success", "dashboard.php");
     }
   }

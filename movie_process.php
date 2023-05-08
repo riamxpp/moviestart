@@ -63,6 +63,22 @@
     }else {
       $message->setMessage("Seu filme precisa de título, descrição e no mínimo uma categoria!", "error", "back");  
     }
+  }else if ($type === "delete"){
+
+    $id = filter_input(INPUT_POST, "id");
+    $movie = $movieDAO->findById($id);
+
+    if($movie) {
+      // Verificando se o filme é do usuário
+      if($movie->users_id === $userData->id){
+        $movieDAO->destroy($movie->id);
+      }else {
+        $message->setMessage("Inválido!", "error", "back");
+      }
+    }else {
+      $message->setMessage("Inválido!", "error", "index.php");  
+    }
+
   }else {
     $message->setMessage("Inválido!", "error", "back");
   }

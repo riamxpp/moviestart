@@ -37,7 +37,7 @@
     $movie->img = " img/movies/movie_cover.jpg";
   }
 
-  echo $BASE_URL . 'img/users/user.png'
+  $alreadyReviewd = false;
 ?>
 
 <div id="main-container" class="container-fluid">
@@ -63,7 +63,8 @@
     <div class="offset-md-1 col-md-8" id="reviews-container">
       <h3 id="reviews-title">Avaliações: </h3>
       <!-- verificando se habilito reviw para o usuário -->
-      <div class="col-md-12" id="review-form-container">
+      <?php if(!empty($userData && !$userOwnsMovie && !$alreadyReviewd)): ?>
+        <div class="col-md-12" id="review-form-container">
         <h4>Envie sua avaliação: </h4>
         <p class="page-description">
           Preencha o formulário com a nota e comentário sobre o filme
@@ -94,6 +95,7 @@
           <input type="submit" class="btn card-btn mt-2" value="Enviar comentário">
         </form>
       </div>
+      <?php endif; ?>
       <div class="col-md-12 review">
         <div class="row">
           <div class="col-md-2">
