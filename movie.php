@@ -1,6 +1,6 @@
 <?php
 
-  require_once("templates/header.php");
+  require_once("templates/Header.php");
   // verificando se o usuário esta logado
   require_once("models/Movie.php");
   require_once("dao/MovieDAO.php");
@@ -17,7 +17,6 @@
     $message->setMessage("O filme não foi encontrado", "error", "index.php");
   }else {
     $movie = $movieDao->findById($id);
-    var_dump($movie);
   }
 
   #checa se o filme é do usuário
@@ -29,5 +28,30 @@
     }
   }
 
+  var_dump($movie->trailer);
+?>
+
+<div id="main-container" class="container-fluid">
+  <div class="row">
+    <div class="off-set-md-1 col-md-6 movie-container">
+      <h1 class="page-title">Movie Title</h1>
+      <p class="movie-details">
+        <span>Duração: <?= $movie->length ?></span>
+        <span class="pipe"></span>
+        <span>Categoria: <?= $movie->category ?></span>
+        <span class="pipe"></span>
+        <span><i class="fas fa-star"></i> 9</span>
+      </p>
+      <iframe src="https://www.youtube.com/embed?v=4dvYznqqqPo&ab_channel=SonyPicturesBrasil" title="<?= $movie->title?> trailer" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        <p><?= $movie->description ?></p>
+      </iframe>
+    </div>
+  </div>
+</div>
+
+
+<?php 
+
+  require_once("templates/Footer.php");
 
 ?>
