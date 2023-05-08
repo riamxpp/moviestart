@@ -32,6 +32,10 @@
   if(!empty($movie->trailer)){
     $newTrailer = str_replace("watch", "embed", $movie->trailer);
   }
+
+  if (empty($movie->img)){
+    $movie->img = " img/movies/movie_cover.jpg";
+  }
 ?>
 
 <div id="main-container" class="container-fluid">
@@ -48,6 +52,82 @@
       <iframe src="<?= $newTrailer ? $newTrailer : $movie->trailer ?>" title="<?= $movie->title?> trailer" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
       </iframe>
       <p><?= $movie->description ?></p>
+      
+    </div>
+    <div class="col-md-4">
+      <div class="movie-image-container" style="background-image: url('<?= $BASE_URL ?><?= $movie->img ?>')">
+      </div>
+    </div>
+    <div class="offset-md-1 col-md-8" id="reviews-container">
+      <h3 id="reviews-title">Avaliações: </h3>
+      <!-- verificando se habilito reviw para o usuário -->
+      <div class="col-md-12" id="review-form-container">
+        <h4>Envie sua avaliação: </h4>
+        <p class="page-description">
+          Preencha o formulário com a nota e comentário sobre o filme
+        </p>
+        <form id="review-form" action="<?= $BASE_URL ?>revie_process.php" method="POST">
+          <input type="hidden" name="type" value="create">
+          <input type="hidden" name="movies_id" value="<?=$movie->id?>">
+          <div class="form-group">
+            <label for="rating">Nota do filme</label>
+            <select name="rating" id="rating">
+              <option value="">Selecione</option>
+              <option value="10">10</option>
+              <option value="9">9</option>
+              <option value="9">9</option>
+              <option value="7">7</option>
+              <option value="6">6</option>
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="review">Seu comentário</label>
+            <textarea class="form-control" name="reviw" id="review" rows="3" placeholder="O que você achou do filme ?"></textarea>
+          </div>
+          <input type="submit" class="btn card-btn mt-2" value="Enviar comentário">
+        </form>
+      </div>
+      <div class="col-md-12 review">
+        <div class="row">
+          <div class="col-md-1">
+            <div class="profile-image-container review-image" class="background-image: url('<?= $BASE
+             ?>img/users/user.png')"></div>
+          </div>
+          <div class="col-md-9 author-details-container">
+            <h4 class="author-name">
+              <a href="">Riam Stefeson</a>
+            </h4>
+            <p><i class="fas fa-star"></i></p>
+          </div>
+          <div class="col-md-12">
+            <p class="comment-title">Comentário:</p>
+            <p>Este é o comentário usuário</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 review">
+        <div class="row">
+          <div class="col-md-1">
+            <div class="profile-image-container review-image" class="background-image: url('<?= $BASE
+             ?>img/users/user.png')"></div>
+          </div>
+          <div class="col-md-9 author-details-container">
+            <h4 class="author-name">
+              <a href="">Riam Stefeson</a>
+            </h4>
+            <p><i class="fas fa-star"></i></p>
+          </div>
+          <div class="col-md-12">
+            <p class="comment-title">Comentário:</p>
+            <p>Este é o comentário usuário</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
