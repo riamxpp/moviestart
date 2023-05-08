@@ -5,6 +5,7 @@
 @import url("archives/edit-proifile.css");
 @import url("archives/dashboard.css");
 @import url("archives/movie.css");
+@import url("archives/editmovie.css");
 @import url("archives/footer.css");
 
 .bold {
@@ -52,6 +53,7 @@
 
 .edit-profile-page .card-btn,
 #add-movie-container .card-btn,
-#review-form .card-btn {
+#review-form .card-btn,
+#edit-movie-form .card-btn {
   width: auto;
 }

@@ -37,7 +37,7 @@
       <div class="col-md-6 offset-md-1">
         <h1><?= $movie->title ?></h1>
         <p class="page-description">Altere os dados do filme no formulárioa abaixo: </p>
-        <form action="<?= $BASE_URL ?>movie_process.php" method="POST" enctype="multipart/form-data">
+        <form id="edit-movie-form" action="<?= $BASE_URL ?>movie_process.php" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="type" value="update">
           <input type="hidden" name="id" value="<?= $movie->id ?>">
             <div class="form-group">
@@ -71,7 +71,7 @@
               <label for="description">Descrição:</label>
               <textarea name="description" id="description" class="form-control" rows="5" placeholder="Descreva o filme"><?= $movie->description ?></textarea>
             </div>
-            <input type="submit" value="Enviar" class="btn card-btn mt-2  ">
+            <input type="submit" value="Editar filme" class="btn card-btn mt-2  ">
         </form>
       </div>
       <div class="col-md-3">
