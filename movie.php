@@ -69,7 +69,7 @@
         <p class="page-description">
           Preencha o formulário com a nota e comentário sobre o filme
         </p>
-        <form id="review-form" action="<?= $BASE_URL ?>revie_process.php" method="POST">
+        <form id="review-form" action="<?= $BASE_URL ?>review_process.php" method="POST">
           <input type="hidden" name="type" value="create">
           <input type="hidden" name="movies_id" value="<?=$movie->id?>">
           <div class="form-group">
@@ -90,7 +90,7 @@
           </div>
           <div class="form-group">
             <label for="review">Seu comentário</label>
-            <textarea class="form-control" name="reviw" id="review" rows="3" placeholder="O que você achou do filme ?"></textarea>
+            <textarea class="form-control" name="review" id="review" rows="3" placeholder="O que você achou do filme ?"></textarea>
           </div>
           <input type="submit" class="btn card-btn mt-2" value="Enviar comentário">
         </form>
