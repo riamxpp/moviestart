@@ -21,13 +21,17 @@
   margin: 0 -15px;
 }
 
+.movies-category-container {
+  display: flex;
+}
+
 .wrapper-movies {
   display: flex;
 }
 
 .movie-card {
   background-color: #1a1a1a;
-  width: 18%;
+  width: 20%;
   margin-bottom: 30px;
   margin-left: 1%;
   margin-right: 1%;

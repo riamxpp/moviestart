@@ -27,7 +27,6 @@
 }
 
 .added-movies-container {
-  /* max-width: 500px; */
   text-align: center;
   background-color: #333;
 }
@@ -37,11 +36,11 @@
   padding: 20px;
 }
 
-.movie-card {
+.added-movies-container.movie-card {
   width: 31%;
 }
 
-.movies-container {
+.added-movies-container .movies-container {
   width: 100%;
   display: flex;
   gap: 1rem;
