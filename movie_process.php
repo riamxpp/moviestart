@@ -126,7 +126,7 @@
               $message->setMessage("Envia uma foto valida!", "error", "back");
             }else {
               $movieDAO->update($movieData);
-              // $message->setMessage("Dados alterados com sucesso!", "success", "dashboard.php");
+              $message->setMessage("Dados alterados com sucesso!", "success", "dashboard.php");
             }
           }
 

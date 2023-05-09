@@ -2,13 +2,13 @@
   require_once("templates/header.php");
 
   // Verifica se o usuário está autenticado
-  require_once("model/User.php");
+  require_once("models/User.php");
   require_once("dao/UserDAO.php");
   require_once("dao/MovieDAO.php");
 
   $user = new User();
   $userDAO = new UserDAO($conn, $BASE_URL);
-  $movieDAo = new MovieDAO($conn, $BASE_URL);
+  $movieDAO = new MovieDAO($conn, $BASE_URL);
 
   $id = filter_input(INPUT_GET, "id");
 
@@ -21,7 +21,7 @@
   }else {
     $userData = $userDAO->findById($id);
 
-    if(!$userData){
+    if($userData){
       $message->setMessage("Usuário não encontrado!", "error", "index.php");
     }
   }
@@ -33,7 +33,7 @@
   }
 
   // Filmes que o usuário adiciono
-  $userMovies = $movieDao->getMoviesByUserId($id);
+  $userMovies = $movieDAO->getMovieByUserId($id);
 
 ?>
 
@@ -53,7 +53,7 @@
       <div class="col-md-12 added-movies-container">
         <h3>Filmes que enviou:</h3>
         <?php foreach($userMovies as $movie):  ?>
-          <?php require("templates/movie_card.php"); ?>
+          <?php require("templates/MovieCard.php"); ?>
         <?php endforeach; ?>
         <?php if(count($userMovies) === 0): ?>
           <p class="empty-list">O usuário ainda não enviou filmes.</p>
