@@ -2,11 +2,13 @@
 
   require_once("models/User.php");
   require_once("dao/UserDAO.php");
+
   $user = new User();
   $userDao = new UserDAO($conn, $BASE_URL);
 
- 
-  $fullName = $user->getFullName($userDao->findById($review->users_id));
+  $dateUser = $userDao->findById($review->users_id);
+
+  $fullName = $user->getFullName($dateUser);
 
 ?>
 
@@ -17,7 +19,7 @@
     </div>
     <div class="col-md-9 author-details-container">
       <h4 class="author-name">
-        <a href=""><?= $fullName ?></a>
+        <a href="<?= $BASE_URL ?>profile.php?id=<?= $review->users_id ?>"><?= $fullName ?></a>
       </h4>
       <p><i class="fas fa-star"></i> <?= $review->rating?></p>
     </div>

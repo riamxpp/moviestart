@@ -146,9 +146,9 @@
     public function findByTitle($title){
       $movies = [];
 
-      $stmt = $this->conn->prepare("SELECT * FROM movies WHERE title = :title");
+      $stmt = $this->conn->prepare("SELECT * FROM movies WHERE title LIKE :title");
 
-      $stmt->bindparam(":title", $title);
+      $stmt->bindValue(":title", "%".$title."%");
     
       $stmt->execute();
 

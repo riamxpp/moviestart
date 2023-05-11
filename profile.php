@@ -21,8 +21,8 @@
   }else {
     $userData = $userDAO->findById($id);
 
-    if($userData){
-      $message->setMessage("Usuário não encontrado!", "error", "index.php");
+    if(!$userData){
+      $message->setMessage("Usuário não encontrado!", "error", "back");
     }
   }
 
