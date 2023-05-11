@@ -38,6 +38,7 @@
         $reviewObject->review = $review;
         $reviewObject->movies_id = $movies_id;
         $reviewObject->users_id = $userData->id;
+        $reviewObject->img_user = $userData->img;
 
         $reviewDAO->create($reviewObject);
 

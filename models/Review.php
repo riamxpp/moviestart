@@ -6,6 +6,7 @@
     public $rating;
     public $review;
     public $users_id;
+    public $img_user;
     public $movies_id;
 
   }

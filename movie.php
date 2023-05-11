@@ -42,8 +42,6 @@
   $alreadyReviewd = false;
 
   $moviesReviews = $reviewDao->getMoviesReview($movie->id);
-
-  var_dump($movie)
 ?>
 
 <div id="main-container" class="container-fluid">
@@ -78,6 +76,7 @@
         <form id="review-form" action="<?= $BASE_URL ?>review_process.php" method="POST">
           <input type="hidden" name="type" value="create">
           <input type="hidden" name="movies_id" value="<?=$movie->id?>">
+          <input type="hidden" name="img_user" value="<?=$userData->img?> ">
           <div class="form-group">
             <label for="rating">Nota do filme</label>
             <select name="rating" id="rating" class="form-control">

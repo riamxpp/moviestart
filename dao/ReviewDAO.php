@@ -23,6 +23,7 @@
       $reviewObject->rating = $data["rating"];
       $reviewObject->review = $data["review"];
       $reviewObject->users_id = $data["users_id"];
+      $reviewObject->img_user = $data["img_user"];
       $reviewObject->movies_id = $data["movies_id"];
 
       return $reviewObject;
@@ -31,15 +32,16 @@
     public function create(Review $review){
 
       $stmt = $this->conn->prepare("INSERT INTO reviews (
-        rating, review, users_id,	movies_id ) 
+        rating, review, users_id, movies_id, img_user ) 
         VALUES (
-          :rating, :review, :users_id, :movies_id
+          :rating, :review, :users_id, :movies_id, :img_user
         )");
 
       $stmt->bindParam(":rating", $review->rating);
       $stmt->bindParam(":review", $review->review);
       $stmt->bindParam(":users_id", $review->users_id);
       $stmt->bindParam(":movies_id", $review->movies_id);
+      $stmt->bindParam(":img_user", $review->img_user);
 
       $stmt->execute();
       $this->message->setMessage("Crítica adicionada com sucesso!", "success", "index.php");
