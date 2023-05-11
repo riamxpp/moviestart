@@ -51,7 +51,9 @@
         <?php endif; ?>
       </div>
       <div class="col-md-12 added-movies-container">
-        <h3>Filmes que enviou:</h3>
+        <?php if (count($userMovies) > 0): ?>
+          <h3>Filmes que enviou:</h3>
+        <?php endif; ?>
         <div class="col-md-12 movies-container">
           <?php foreach($userMovies as $movie):  ?>
             <?php require("templates/MovieCard.php"); ?>

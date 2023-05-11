@@ -53,7 +53,7 @@
         <span class="pipe"></span>
         <span>Categoria: <?= $movie->category ?></span>
         <span class="pipe"></span>
-        <span><i class="fas fa-star"></i> 9</span>
+        <span><i class="fas fa-star"></i> <?= $movie->rating ?></span>
       </p>
       <iframe src="<?= $newTrailer ? $newTrailer : $movie->trailer ?>" title="<?= $movie->title?> trailer" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
       </iframe>
@@ -101,7 +101,7 @@
       </div>
       <?php endif; ?>
       <?php foreach($moviesReviews as $review): ?>
-        <?php require_once("templates/Review.php"); ?>
+        <?php require("templates/Review.php"); ?>
       <?php endforeach; ?>
       <?php if(count($moviesReviews) === 0): ?>
         <p class="empty-list">Não há comentários para esse filme ainda.</p>

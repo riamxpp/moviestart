@@ -1,9 +1,12 @@
 <?php 
 
   require_once("models/User.php");
+  require_once("dao/UserDAO.php");
   $user = new User();
+  $userDao = new UserDAO($conn, $BASE_URL);
 
-  $fullName = $user->getFullName($userData);
+ 
+  $fullName = $user->getFullName($userDao->findById($review->users_id));
 
 ?>
 
@@ -16,7 +19,7 @@
       <h4 class="author-name">
         <a href=""><?= $fullName ?></a>
       </h4>
-      <p><i class="fas fa-star"></i></p>
+      <p><i class="fas fa-star"></i> <?= $review->rating?></p>
     </div>
     <div class="col-md-12">
       <p class="comment-title">Comentário:</p>

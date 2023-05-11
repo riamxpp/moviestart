@@ -13,6 +13,7 @@
     public $length;
     
     public $users_id;
+    public $rating;
 
     // Duplicando código pq só vou repetir esta função, mas o correto seria criar um model para img;
     public function imageGenerateName(){
