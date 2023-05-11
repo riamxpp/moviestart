@@ -28,6 +28,8 @@
     if ($userData->id === $movie->users_id){
       $userOwnsMovie = true; 
     }
+
+    $alreadyReviewd = $reviewDao->hasAlreadyReviewed($id, $userData->id);
   }
   // Trocando o 'watch' do link do trailer por 'embed'
   $newTrailer;
@@ -39,9 +41,7 @@
     $movie->img = " img/movies/movie_cover.jpg";
   }
 
-  $alreadyReviewd = false;
-
-  $moviesReviews = $reviewDao->getMoviesReview($movie->id);
+  $moviesReviews = $reviewDao->getMoviesReview($id);
 ?>
 
 <div id="main-container" class="container-fluid">
@@ -67,7 +67,7 @@
     <div class="offset-md-1 col-md-8" id="reviews-container">
       <h3 id="reviews-title">Avaliações: </h3>
       <!-- verificando se habilito reviw para o usuário -->
-      <?php if(!empty($userData && !$userOwnsMovie && !$alreadyReviewd)): ?>
+      <?php if(!empty($userData) && !$userOwnsMovie && !$alreadyReviewd): ?>
         <div class="col-md-12" id="review-form-container">
         <h4>Envie sua avaliação: </h4>
         <p class="page-description">
@@ -76,7 +76,6 @@
         <form id="review-form" action="<?= $BASE_URL ?>review_process.php" method="POST">
           <input type="hidden" name="type" value="create">
           <input type="hidden" name="movies_id" value="<?=$movie->id?>">
-          <input type="hidden" name="img_user" value="<?=$userData->img?> ">
           <div class="form-group">
             <label for="rating">Nota do filme</label>
             <select name="rating" id="rating" class="form-control">
