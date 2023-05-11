@@ -33,8 +33,8 @@
 
 <div class="container-fluid" id="main-container">
   <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-6 offset-md-1">
+    <div class="row edit-movie-container">
+      <div class="col-md-6 offset-md-1 edit-movie-form">
         <h1><?= $movie->title ?></h1>
         <p class="page-description">Altere os dados do filme no formulárioa abaixo: </p>
         <form id="edit-movie-form" action="<?= $BASE_URL ?>movie_process.php" method="POST" enctype="multipart/form-data">
@@ -74,7 +74,7 @@
             <input type="submit" value="Editar filme" class="btn card-btn mt-2  ">
         </form>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 cartas-movie-container">
         <div class="movie-image-container" style="background-image: url('<?= $BASE_URL ?><?= $movie->img ?>')"></div>
       </div>
     </div>

@@ -1,0 +1,16 @@
+@media (max-width: 450px) {
+  .edit-movie-container {
+    flex-direction: column-reverse;
+  }
+
+  .cartas-movie-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .cartas-movie-container div {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+  }
+}

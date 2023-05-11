@@ -27,7 +27,7 @@
         <p class="empty-list">Ainda não há filmes cadastrado</p>
       <?php else: ?>
         <p class="section-description">Veja os melhores filmes de ação</p>
-        <div class="movies-category-container">
+        <div class="wrapper-movies">
           <?php foreach($actionMovies as $movie): ?>
             <?php require("templates/MovieCard.php"); ?>
           <?php endforeach; ?>
@@ -37,7 +37,7 @@
 
     <div class="movies-container">
       <h2 class="section-title">Comédia</h2>
-      <div class="movies-category-container">
+      <div class="wrapper-movies">
         <?php foreach($comedyMovies as $movie): ?>
           <?php require("templates/MovieCard.php") ?>
         <?php endforeach; ?>
@@ -48,20 +48,7 @@
       <?php else: ?>
         <p class="section-description">Veja os melhores filmes de comédia</p>
         <?php foreach($actionMovies as $movie): ?>
-          <div class="card movie-card">
-            <div class="card-img-top" style="background-image: url('<?= $BASE_URL ?><?= $movie->img ?>')"></div>
-            <div class="card-body">
-              <p class="card-rating">
-                <i class="fas fa-star"></i>
-                <span class="rating">9</span>
-              </p>
-              <h5 class="card-title">
-                <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>
-              </h5>
-              <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>" class="btn btn-primary rate-btn">Avaliar</a>
-              <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>" class="btn btn-primary card-btn">Conhecer</a>
-            </div>
-          </div>
+          <?php require("templates/MovieCard.php") ?>
         <?php endforeach; ?>
       <?php endif; ?>
     </div>

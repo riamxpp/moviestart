@@ -84,3 +84,25 @@
   width: 100%;
   font-weight: bold;
 }
+
+@media (max-width: 450px) {
+  #main-container {
+    padding: 20px;
+  }
+
+  .movies-container {
+    padding: 0 15px;
+  }
+
+  .movie-card {
+    width: 100%;
+  }
+
+  .wrapper-movies {
+    flex-direction: column;
+  }
+
+  .empty-list {
+    margin-top: 20px;
+  }
+}

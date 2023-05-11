@@ -58,3 +58,9 @@
 #edit-movie-form .card-btn {
   width: auto;
 }
+
+@media (max-width: 450px) {
+  .msg {
+    width: 100%;
+  }
+}
