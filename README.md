@@ -1,8 +1,8 @@
 <h1>Movie Start</h1>
 <p>Este é um site de filmes onde você pode encontrar informações sobre seus filmes favoritos, assistir a trailers e encontrar cinemas próximos para assistir aos filmes.</p>
-<h2>Funcionalidades<h2>
+<h2>Funcionalidades</h2>
 <ul>
-  <li>Adicionar, alterar e excluir um filme;</li< 
+  <li>Adicionar, alterar e excluir um filme;</li>
   <li>Criar um usário, alterar suas informações, adicionar foto de perfil;</li>
   <li>Autenticação com token, validação de token;</li>
   <li>Listagem de filmes, inclusive baseado em suas categorias.</li>
